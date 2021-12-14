@@ -4,7 +4,6 @@
  */
 package com.linkedin.nn
 
-import com.databricks.spark.avro._
 import com.linkedin.nn.Types.ItemId
 import com.linkedin.nn.algorithm.{BruteForceNNS, CosineSignRandomProjectionNNS, JaccardMinHashNNS, L2ScalarRandomProjectionNNS}
 import com.linkedin.nn.params.NNSCLIParams
@@ -60,7 +59,7 @@ object NearestNeighborSearchDriver {
                   sparkSession: SparkSession): RDD[(ItemId, Vector)] = {
 
     val numFeatures = featureIndexMapB.value.size
-    sparkSession.read.avro(path)
+    sparkSession.read.parquet(path)
       .select(idColumnName, attributesColumnName)
       .rdd
       .map(r =>
@@ -92,7 +91,7 @@ object NearestNeighborSearchDriver {
       StructField("itemId", LongType, nullable = false),
       StructField("candidateId", LongType, nullable = false),
       StructField("distance", DoubleType, nullable = false)))
-    sparkSession.createDataFrame(output, schema).write.mode(SaveMode.Overwrite).avro(outputPath)
+    sparkSession.createDataFrame(output, schema).write.mode(SaveMode.Overwrite).parquet(outputPath)
   }
 
   /**

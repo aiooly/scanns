@@ -7,8 +7,8 @@ apply plugin: 'scala'
 dependencies {
   // This is Scala's option parsing library
   compile("com.github.scopt:scopt$scalaSuffix:3.5.0")
-  compile("com.databricks:spark-avro$scalaSuffix:3.2.0")
-  compile("org.apache.spark:spark-mllib$scalaSuffix:2.1.0")
+  // compile("org.apache.spark:spark-avro$scalaSuffix:3.2.0")
+  compile("org.apache.spark:spark-mllib$scalaSuffix:3.1.1")
 
   testCompile(project(":test-utils$scalaSuffix"))
   testCompile("org.mockito:mockito-core:1.+")

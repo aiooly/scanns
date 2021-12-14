@@ -36,7 +36,7 @@ allprojects {
 
 // The gradle variables defined here are visible in sub-projects
 ext {
-  sparkVersion = '2.1.0'
+  sparkVersion = '3.1.1'
 }
 
 subprojects {
@@ -93,7 +93,7 @@ subprojects {
   }
 
   tasks.withType(ScalaCompile) {
-    scalaCompileOptions.additionalParameters = ["-feature", "-deprecation", "-verbose", "-optimize", "-unchecked", "-Yinline-warnings", "-g:vars"]
+    scalaCompileOptions.additionalParameters = ["-feature", "-deprecation", "-verbose", "-unchecked", "-g:vars"]
 
     configure(scalaCompileOptions.forkOptions) {
       memoryMaximumSize = '1g'
