@@ -272,6 +272,7 @@ project.
 git clone git@github.com:linkedin/scanns.git
 cd scanns
 ./gradlew build # jar will be built in build/scanns_2.1*/libs
+./gradlew publish # will publish scanns_2.12 and test-utils_2.12 to jfrog
 ```
 
 ## Contributions
