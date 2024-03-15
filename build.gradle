@@ -46,30 +46,30 @@ subprojects {
   // configure publishing
   apply plugin: 'maven-publish'
   apply plugin: 'java'
-  publishing {
-    repositories {
-      maven {
-        credentials {
-          username = "$usr"
-          password = "$pwd"
-        }
-        url = "https://tubins.jfrog.io/artifactory/gradle-release"
-      }
-    }
-
-    publications {
-      maven(MavenPublication) {
-        groupId = 'com.linkedin.nn'
-        artifactId = project.name
-        version = "1.0.0"
-        from components.java
-        pom {
-          name = project.name
-          description = 'Scalable Approximate Nearest Neighbor Search'
-        }
-      }
-    }
-  }
+//  publishing {
+//    repositories {
+//      maven {
+//        credentials {
+//          username = "$usr"
+//          password = "$pwd"
+//        }
+//        url = "https://tubins.jfrog.io/artifactory/gradle-release"
+//      }
+//    }
+//
+//    publications {
+//      maven(MavenPublication) {
+//        groupId = 'com.linkedin.nn'
+//        artifactId = project.name
+//        version = "1.0.0"
+//        from components.java
+//        pom {
+//          name = project.name
+//          description = 'Scalable Approximate Nearest Neighbor Search'
+//        }
+//      }
+//    }
+//  }
 
   plugins.withType(JavaPlugin) {
     tasks.withType(Test) {

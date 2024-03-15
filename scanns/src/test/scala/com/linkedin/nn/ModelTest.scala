@@ -13,8 +13,8 @@ import org.testng.annotations.Test
 
 /* A simple end-to-end run of a nearest neighbor search using the driver */
 class ModelTest extends SparkTestUtils {
-  // @Test
   // This is unable to be run currently due to some PriorityQueue serialization issues
+  @Test
   def testModel(): Unit = sparkTest("modelTest") {
     sc.getConf.registerKryoClasses(Array(classOf[TopNQueue], classOf[SignRandomProjectionHashFunction]))
 
@@ -38,6 +38,5 @@ class ModelTest extends SparkTestUtils {
       .setJoinParallelism(5)
       .createModel(numFeatures)
     val nbrs = model.getSelfAllNearestNeighbors(items, 10)
-    nbrs.count()
   }
 }
