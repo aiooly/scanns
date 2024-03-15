@@ -48,9 +48,7 @@ class ModelTest extends SparkTestUtils {
   @Test
   def testMinHash(): Unit = sparkTest("modelTest") {
     sc.getConf.registerKryoClasses(Array(classOf[TopNQueue], classOf[SignRandomProjectionHashFunction]))
-
-    var df = sparkSession.read.option("header", true).csv("src/test/resources/text01.csv")
-
+    val df = sparkSession.read.option("header", true).csv("src/test/resources/text01.csv")
     val tokenizer = new Tokenizer().setInputCol("question_text").setOutputCol("words")
     val tokenized = tokenizer.transform(df)
 
@@ -84,6 +82,5 @@ class ModelTest extends SparkTestUtils {
     val nbrs = model.getSelfAllNearestNeighbors(items, 10)
 
     nbrs.collect().foreach(row => println(row))
-
   }
 }
