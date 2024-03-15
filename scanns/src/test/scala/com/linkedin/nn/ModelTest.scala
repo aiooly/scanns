@@ -38,5 +38,7 @@ class ModelTest extends SparkTestUtils {
       .setJoinParallelism(5)
       .createModel(numFeatures)
     val nbrs = model.getSelfAllNearestNeighbors(items, 10)
+
+    print("nbrs: ", nbrs.take(10).mkString("Array(", ", ", ")"))
   }
 }
